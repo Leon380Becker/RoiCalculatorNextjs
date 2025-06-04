@@ -8,8 +8,10 @@ import {
   Document,
   StyleSheet,
   Image,
-  Font
+  Font,
+  Link
 } from '@react-pdf/renderer';
+
 
 Font.register({
   family: 'Inter',
@@ -390,6 +392,7 @@ tryItLabel: {
   marginBottom: 14,
   textAlign: 'center',
   lineHeight: 1.2,
+  textDecoration: 'none',
 },
 tryItButton: {
   backgroundColor: '#362063',
@@ -403,6 +406,16 @@ tryItButtonText: {
   fontWeight: 500,
   textAlign: 'center',
 },
+tryItLink: {
+  backgroundColor: '#362063',
+  color: 'white',
+  fontSize: 8,
+  paddingVertical: 4,
+  paddingHorizontal: 10,
+  borderRadius: 10,
+  textAlign: 'center',
+  textDecoration: 'none', 
+}
 
   
   
@@ -623,21 +636,35 @@ const PDFDocument = ({
 
             <View style={styles.tryItRow}>
               {[
-                { icon: TeamRhythmIcon, label: 'TeamRhythm' },
-                { icon: ProgramsIcon, label: 'Programs' },
-                { icon: RoadmapsIcon, label: 'Roadmaps' },
+                {
+                  icon: TeamRhythmIcon,
+                  label: 'TeamRhythm',
+                  link: 'https://marketplace.atlassian.com/apps/1212078/easy-agile-teamrhythm-user-story-map-retrospectives?tab=overview',
+                },
+                {
+                  icon: ProgramsIcon,
+                  label: 'Programs',
+                  link: 'https://marketplace.atlassian.com/apps/1219491/easy-agile-programs-pi-planning-program-board-dependencies?hosting=cloud&tab=overview',
+                },
+                {
+                  icon: RoadmapsIcon,
+                  label: 'Roadmaps',
+                  link: 'https://marketplace.atlassian.com/apps/1215695/easy-agile-roadmaps-for-jira?tab=overview&hosting=cloud',
+                },
               ].map((item, idx) => (
                 <View style={styles.tryItItem} key={idx}>
                   <Image src={item.icon} style={styles.tryItImage} />
                   <Text style={styles.tryItLabel}>
-                    Easy Agile{'\n'}{item.label}
+                    Easy Agile{'\n'}
+                    {item.label}
                   </Text>
-                  <View style={styles.tryItButton}>
-                    <Text style={styles.tryItButtonText}>TRY IT FREE</Text>
-                  </View>
+                  <Link src={item.link} style={styles.tryItLink}>
+                    TRY IT FREE
+                  </Link>
                 </View>
               ))}
             </View>
+
           </View>
 
             </View>
