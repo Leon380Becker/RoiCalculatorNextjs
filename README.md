@@ -15,23 +15,158 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-Create a .env.local file to connect to any desirable database
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# 📄 Project Overview
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project is a **client-side ROI calculator** that allows users to:
 
-## Learn More
+* Fill in a form with their name and email
+* Automatically generate and download a PDF with the calculated results
+* Send the name and email to a MongoDB database via a backend API
 
-To learn more about Next.js, take a look at the following resources:
+All calculations are handled client-side. The only backend functionality is for storing form submissions in the database.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ⚙️ Backend API Endpoint
 
-## Deploy on Vercel
+The backend logic for saving user data is implemented in the following API route:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**File:** `/pages/api/save-user.ts`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This API:
+
+* Accepts `POST` requests
+* Expects a JSON body with `name` and `email`
+* Saves the data to a MongoDB collection
+
+The API uses **Mongoose** to connect to MongoDB. To enable it, you must set up your own MongoDB database and configure your environment variables.
+
+---
+
+## ☁️ Set Up MongoDB
+
+### 1. Create a MongoDB Account
+
+1. Go to [https://www.mongodb.com](https://www.mongodb.com)
+2. Click **"Start Free"** and create an account
+3. Select **MongoDB Atlas** (cloud hosting)
+4. Create a **Shared Cluster** (Free Tier is fine)
+
+### 2. Set Up a Database
+
+1. Create a new project
+2. Click **"Build a Database"**
+3. Choose the free **M0 cluster**
+4. Once the cluster is created:
+
+   * Go to **Database Access**, add a user with a username and password
+   * Go to **Network Access**, add your IP address (or `0.0.0.0` to allow all)
+   * Go to **Clusters → Connect → Drivers**, and copy your connection string
+
+It will look like:
+
+```
+mongodb+srv://<username>:<password>@cluster0.mongodb.net/?retryWrites=true&w=majority
+```
+
+---
+
+## 🔐 Configure Environment Variables
+
+In the root of the project, create a `.env.local` file with the following contents:
+
+```env
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/roi-database?retryWrites=true&w=majority
+```
+
+> ⚠️ Replace `<username>` and `<password>` with your actual credentials. (From the connection string you copied "mongodb+srv://<username>:<password>@cluster0.mongodb.net/?retryWrites=true&w=majority")
+> The database name `roi-database` can be changed to whatever you prefer.
+
+---
+
+## 🛠 Install Dependencies
+
+If you're setting this up from scratch or handing off to a new developer, instruct them to run:
+
+```bash
+npm install
+```
+
+This installs required dependencies such as:
+
+* `mongoose` — for MongoDB interactions
+* `next`, `react`, `react-dom` — core framework packages
+
+Ensure `mongoose` is listed in your `package.json` dependencies:
+
+```json
+"dependencies": {
+  "mongoose": "^7.4.0",
+  "next": "...",
+  "react": "...",
+  "react-dom": "..."
+}
+```
+
+---
+
+## 💻 Development Setup
+
+### 1. Recommended: Install Visual Studio Code
+
+VS Code is the preferred editor for this project. It provides:
+
+* Easy `.env` management
+* Git integration
+* Extensions for formatting and debugging
+
+### 2. Run the Development Server
+
+To start the project locally:
+
+```bash
+npm run dev
+```
+
+Your app should be available at [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 🧮 Calculation Logic
+
+All calculation formulas and helper functions used in the ROI calculator live in the `/helpers` folder.
+
+This folder contains modular JavaScript or TypeScript files that:
+
+* Receive inputs from the user form (Calculator inputs)
+* Calculate financial metrics or return on investment values
+* Provide formatted data to the PDF builder and UI components
+
+These are imported and used directly in the form submission logic and PDF generation process.
+
+---
+
+## 📩 Form Submission + PDF Download
+
+The popup form:
+
+* Collects user input (name, email)
+* Calls the `/api/save-user` route to save to MongoDB
+* Automatically generates and triggers a PDF download with the calculated data
+
+> ✅ No server-side rendering or server-side PDF generation is used — everything runs on the client.
+
+---
+
+## 🔒 Security Notes
+
+* `.env.local` must be listed in `.gitignore`
+* Database credentials must never be committed to GitHub
+* Only `POST` is allowed on the `/api/save-user` endpoint (already enforced in code)
+
+---
+##Bonus
+To allow your local development environment or server (e.g., VS Code on your PC) to connect to the database, add your machine’s IP address under Network Access in your MongoDB Atlas dashboard.
+
+Feel free to reach out with any setup questions or integration support!
