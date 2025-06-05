@@ -173,25 +173,25 @@ To deploy your Next.js app on Vercel:
 
 1. Push to GitHub
 
-Make sure your project is version controlled and pushed to a GitHub repository.
+   Make sure your project is version controlled and pushed to a GitHub repository.
 
 2. Connect to Vercel
 
-Go to vercel.com
+   Go to vercel.com
 
-Sign in and click "Add New Project"
+   Sign in and click "Add New Project"
 
-Import your GitHub repository
+   Import your GitHub repository
 
-Vercel will detect it as a Next.js project automatically
+   Vercel will detect it as a Next.js project automatically
 
 3. Add Environment Variables
 
-After import, go to the "Settings" tab of the project
+   After import, go to the "Settings" tab of the project
 
-Click "Environment Variables"
+   Click "Environment Variables"
 
-Add:
+   Add:
 ```
 MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/roi-database?retryWrites=true&w=majority
 
