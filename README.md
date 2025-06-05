@@ -167,7 +167,7 @@ The popup form:
 
 ---
 
-▲ Deploying on Vercel (Hosting)
+## ▲ Deploying on Vercel (Hosting)
 
 To deploy your Next.js app on Vercel:
 
@@ -192,9 +192,13 @@ After import, go to the "Settings" tab of the project
 Click "Environment Variables"
 
 Add:
-
+```
 MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/roi-database?retryWrites=true&w=majority
 
+Two parts
+Key: MONGODB_URI
+Value: 	mongodb+srv://<username>:<password>@cluster0.mongodb.net/roi-database?retryWrites=true&w=majority
+```
 Click Save and Deploy your app
 
 Vercel will build and host your frontend, and your backend API routes (like /api/save-user) will run as serverless functions.
