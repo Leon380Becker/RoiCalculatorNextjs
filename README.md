@@ -207,7 +207,7 @@ Vercel will build and host your frontend, and your backend API routes (like /api
 
 You now have a client-side ROI calculator with PDF generation and backend user data capture, ready for local development and live deployment via Vercel.
 
-##Bonus
+## Bonus
 To allow your local development environment or server (e.g., VS Code on your PC) to connect to the database, add your machine’s IP address under Network Access in your MongoDB Atlas dashboard.
 
 Feel free to reach out with any setup questions or integration support!
