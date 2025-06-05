@@ -166,6 +166,43 @@ The popup form:
 * Only `POST` is allowed on the `/api/save-user` endpoint (already enforced in code)
 
 ---
+
+▲ Deploying on Vercel (Hosting)
+
+To deploy your Next.js app on Vercel:
+
+1. Push to GitHub
+
+Make sure your project is version controlled and pushed to a GitHub repository.
+
+2. Connect to Vercel
+
+Go to vercel.com
+
+Sign in and click "Add New Project"
+
+Import your GitHub repository
+
+Vercel will detect it as a Next.js project automatically
+
+3. Add Environment Variables
+
+After import, go to the "Settings" tab of the project
+
+Click "Environment Variables"
+
+Add:
+
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/roi-database?retryWrites=true&w=majority
+
+Click Save and Deploy your app
+
+Vercel will build and host your frontend, and your backend API routes (like /api/save-user) will run as serverless functions.
+
+✅ Done!
+
+You now have a client-side ROI calculator with PDF generation and backend user data capture, ready for local development and live deployment via Vercel.
+
 ##Bonus
 To allow your local development environment or server (e.g., VS Code on your PC) to connect to the database, add your machine’s IP address under Network Access in your MongoDB Atlas dashboard.
 
