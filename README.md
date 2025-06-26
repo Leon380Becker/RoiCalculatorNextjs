@@ -1,170 +1,211 @@
-📄 Project Overview
-This project is a client-side ROI calculator that allows users to:
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Fill in a form with their name and email
+## Getting Started
 
-Automatically generate and download a PDF with the calculated results
+First, run the development server:
 
-Send the name and email directly to HubSpot as new Contacts (via the backend API)
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+---
+
+# 📄 Project Overview
+
+This project is a **client-side ROI calculator** that allows users to:
+
+* Fill in a form with their name and email
+* Automatically generate and download a PDF with the calculated results
+* Send the name and email directly to HubSpot as new Contacts (via the backend API)
 
 All calculations are handled client-side. The only backend functionality is for sending submissions to HubSpot.
 
-⚙️ Backend API Endpoint
+---
+
+## ⚙️ Backend API Endpoint
+
 The backend logic for sending user data to HubSpot is implemented in the following API route:
 
-File: /pages/api/save-user.ts
+**File:** `/pages/api/save-user.ts`
 
 This API:
 
-Accepts POST requests
+* Accepts `POST` requests
+* Expects a JSON body with `name` and `email`
+* Sends the data to HubSpot CRM via the official API
+* Requires a valid `HUBSPOT_ACCESS_TOKEN` in your environment variables
 
-Expects a JSON body with name and email
+---
 
-Sends the data to HubSpot CRM via the official API
+## 🔐 Configure Environment Variables
 
-Requires a valid HUBSPOT_ACCESS_TOKEN in your environment variables
-
-🔐 Configure Environment Variables
 To use the HubSpot API, you need to set the following environment variable:
 
-env
-Copy
-Edit
+```env
 HUBSPOT_ACCESS_TOKEN=your_private_app_token_here
+```
+
 This can be done either:
 
-Locally (create a .env.local file in the root of the project)
+* Locally (create a `.env.local` file in the root of the project)
+* On Vercel (go to your project → Settings → Environment Variables)
 
-On Vercel (go to your project → Settings → Environment Variables)
+---
 
-🛠 Install Dependencies
+## 🛠️ Install Dependencies
+
 If you're setting this up from scratch or handing off to a new developer, run:
 
-bash
-Copy
-Edit
+```bash
 npm install
+```
+
 This installs required dependencies such as:
 
-next, react, react-dom — core framework packages
+* `next`, `react`, `react-dom` — core framework packages
+* Any additional API packages used to connect to HubSpot
 
-Any additional API packages used to connect to HubSpot
+---
 
-💻 Development Setup
-1. Recommended: Install Visual Studio Code
+## 💻 Development Setup
+
+### 1. Recommended: Install Visual Studio Code
+
 VS Code is the preferred editor for this project. It provides:
 
-Easy .env management
+* Easy `.env` management
+* Git integration
+* Extensions for formatting and debugging
 
-Git integration
+### 2. Run the Development Server
 
-Extensions for formatting and debugging
-
-2. Run the Development Server
 To start the project locally:
 
-bash
-Copy
-Edit
+```bash
 npm run dev
-Your app should be available at http://localhost:3000
+```
 
-🧮 Calculation Logic
-All calculation formulas and helper functions used in the ROI calculator live in the /helpers folder.
+Your app should be available at [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 🧲 Calculation Logic
+
+All calculation formulas and helper functions used in the ROI calculator live in the `/helpers` folder.
 
 This folder contains modular JavaScript or TypeScript files that:
 
-Receive inputs from the user form (Calculator inputs)
-
-Calculate financial metrics or return on investment values
-
-Provide formatted data to the PDF builder and UI components
+* Receive inputs from the user form (Calculator inputs)
+* Calculate financial metrics or return on investment values
+* Provide formatted data to the PDF builder and UI components
 
 These are imported and used directly in the form submission logic and PDF generation process.
 
-📩 Form Submission + PDF Download
+---
+
+## 📩 Form Submission + PDF Download
+
 The popup form:
 
-Collects user input (name, email)
+* Collects user input (name, email)
+* Sends data to `/api/save-user` to create a new HubSpot contact
+* Automatically generates and triggers a PDF download with the calculated data
 
-Sends data to /api/save-user to create a new HubSpot contact
+> ✅ No server-side rendering or server-side PDF generation is used — everything runs on the client.
 
-Automatically generates and triggers a PDF download with the calculated data
+---
 
-✅ No server-side rendering or server-side PDF generation is used — everything runs on the client.
+## 🔒 Security Notes
 
-🔒 Security Notes
-.env.local must be listed in .gitignore
+* `.env.local` must be listed in `.gitignore`
+* Access tokens must never be committed to GitHub
+* Only `POST` is allowed on the `/api/save-user` endpoint (already enforced in code)
 
-Access tokens must never be committed to GitHub
+---
 
-Only POST is allowed on the /api/save-user endpoint (already enforced in code)
+## 🔗 HubSpot Integration Guide
 
-🔗 HubSpot Integration Guide
 To enable HubSpot integration:
 
-1. Create a HubSpot Private App
-Log in to your HubSpot account
+### 1. Create a HubSpot Private App
 
-Go to Settings → Integrations → Private Apps
+1. Log in to your HubSpot account
+2. Go to **Settings → Integrations → Private Apps**
+3. Click **"Create a Private App"**
+4. Enable the following scope:
 
-Click "Create a Private App"
-
-Enable the following scope:
-
-arduino
-Copy
-Edit
+```
 crm.objects.contacts.write
-Copy your Access Token
+```
 
-2. Add the Token to Your Environment
-Locally
-Create a .env.local file in the root:
+5. Copy your **Access Token**
 
-env
-Copy
-Edit
+---
+
+### 2. Add the Token to Your Environment
+
+#### Locally
+
+Create a `.env.local` file in the root:
+
+```env
 HUBSPOT_ACCESS_TOKEN=your_token_here
-On Vercel
-Go to your project on vercel.com
+```
 
-Click Settings → Environment Variables
+#### On Vercel
 
-Add:
+1. Go to your project on [vercel.com](https://vercel.com)
+2. Click **Settings → Environment Variables**
+3. Add:
 
-makefile
-Copy
-Edit
+```
 Key:    HUBSPOT_ACCESS_TOKEN
 Value:  your_token_here
-Click Save and Redeploy your project.
+```
 
-⚠️ Notes on Testing
-HubSpot does not allow duplicate email addresses.
+Click **Save** and **Redeploy** your project.
 
-A 500 error may occur if the email already exists in your CRM.
+---
 
-Always test with unique emails when checking submissions.
+### ⚠️ Notes on Testing
 
-▲ Deploying on Vercel (Hosting)
+* HubSpot does **not** allow duplicate email addresses.
+* A 500 error may occur if the email already exists in your CRM.
+* Always test with **unique** emails when checking submissions.
+
+---
+
+## ▲ Deploying on Vercel (Hosting)
+
 To deploy your Next.js app on Vercel:
 
-Push your project to GitHub
+1. Push your project to GitHub
 
-Go to vercel.com, sign in, and click "Add New Project"
+2. Go to [vercel.com](https://vercel.com), sign in, and click "Add New Project"
 
-Import your GitHub repository
+3. Import your GitHub repository
 
-Vercel will detect it as a Next.js project automatically.
+   Vercel will detect it as a Next.js project automatically.
 
-Set Environment Variables:
+4. Set Environment Variables:
 
-makefile
-Copy
-Edit
+```
 Key:    HUBSPOT_ACCESS_TOKEN
 Value:  your_private_app_token
-Deploy the project
+```
 
-✅ Done! Your app is now live, and leads submitted through the form go directly into HubSpot.
+5. Deploy the project
+
+📅 Done! Your app is now live, and leads submitted through the form go directly into HubSpot.
+
+---
+
+Feel free to reach out with any setup questions or integration support.
