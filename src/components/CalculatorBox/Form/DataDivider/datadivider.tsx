@@ -1,8 +1,7 @@
 import React from 'react'; 
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box'; 
+import Stack from '@mui/material/Stack'; 
 import Typography from '@mui/material/Typography';
-
 
 export function IntroDivider({ title, value, description }: {
   title: string;
@@ -10,7 +9,7 @@ export function IntroDivider({ title, value, description }: {
   description: string;
 }) {
   return (
-    <Box sx={{ mt: 2 }}>
+    <Box sx={{ mt: 2, color: "#343A41" }}>  {/* Set the color on the Box container */}
       <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
         <Typography
           gutterBottom
@@ -41,7 +40,7 @@ export function IntroDivider({ title, value, description }: {
           {value}
         </Typography>
       </Stack>
-      <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+      <Typography variant="body2">
         {description}
       </Typography>
     </Box>

@@ -48,7 +48,7 @@ export function CalculatorForm({ state, setState }: CalculatorFormProps) {
     >
       {/* Region Selector */}
       <FormControl fullWidth>
-        <Typography variant="h6" sx={{ pb: 1 }}>
+        <Typography variant="h6" sx={{ pb: 1, color: "#4a5769", fontSize: "0.85em" }}>
           Location
         </Typography>
         <Select
@@ -65,8 +65,8 @@ export function CalculatorForm({ state, setState }: CalculatorFormProps) {
               paddingBottom: "10px",
               fontWeight: "600",
               fontSize: "0.9em",
-              color: "#2C32324",
-              backgroundColor: "#E1E2E4",
+              color: "#4a5769",
+              backgroundColor: "#e7e8e9",
               borderRadius: "8px",
             },
             "&:before, &:after": { display: "none" },
@@ -81,7 +81,7 @@ export function CalculatorForm({ state, setState }: CalculatorFormProps) {
           <MenuItem value={REGION.MIDDLE_EAST_AFRICA}>Middle East & Africa</MenuItem>
           <MenuItem value={REGION.OCEANIA}>Oceania</MenuItem>
         </Select>
-        <Typography variant="h6" sx={{ pt: 1, fontSize: "0.85em" }}>
+        <Typography variant="h6" sx={{ pt: 1, color:"#4a5769", fontSize: "0.85em" }}>
           Choose your Local region
         </Typography>
       </FormControl>

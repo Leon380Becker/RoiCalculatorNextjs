@@ -76,7 +76,8 @@ export const DisplayBox = forwardRef<HTMLDivElement, DisplayBoxProps>(
       sx={{
         display: "flex",
         width: "100%",
-        backgroundColor: "#E5D7FF",
+        color: "#343A41", // Set color for all child text elements
+        backgroundColor: "#e8e0ff",
         flexDirection: { xs: "column", lg: "row" },
         alignItems: "stretch",
         justifyContent: "space-between",

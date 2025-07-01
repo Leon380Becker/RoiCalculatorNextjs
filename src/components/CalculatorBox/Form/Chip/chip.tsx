@@ -12,14 +12,15 @@ export function BasicChips({ label = "Default Chip", onClick }: {
         label={label} 
         onClick={onClick} 
         sx={{
-          backgroundColor: "#2D005D", 
+          backgroundColor: "#330066", 
           color: "white", 
           fontSize: "0.9em",
           padding: "22px 30px",
           borderRadius: "120px",
           cursor: "pointer", 
           "&:hover": {
-            backgroundColor: "#402758",
+            backgroundColor: "#0aebd2",
+            color: "#330066",
           }
         }} 
       />

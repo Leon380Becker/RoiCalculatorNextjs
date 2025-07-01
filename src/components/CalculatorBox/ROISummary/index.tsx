@@ -49,12 +49,13 @@ export function ROISummary({ state, getChartImage }: {
         sx={{
           flex: 1,
           padding: 3,
-          backgroundColor: "#E5D7FF",
+          backgroundColor: "#e8e0ff",
           borderRadius: 2,
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
           height: "100%",
+          color: "#343A41",  // Set color for all child text elements
         }}
       >
         {/* ROI Placeholder Section */}
@@ -76,16 +77,16 @@ export function ROISummary({ state, getChartImage }: {
 
         {/* ROI Breakdown Placeholder */}
         <Box>
-          <IntroDivider
+          <IntroDivider 
             title="Productivity Gain"
             value="$ --"
-            description={
+            description={(
               <>
                 Calculated as the sum of <br />
                 revenue increase and cost <br />
                 savings over the years
               </>
-            }
+            )}
           />
           <IntroDivider title="Cumulative ROI" value="--%" description="Year 1" />
           <IntroDivider title="Cumulative ROI" value="--%" description="Year 2" />
@@ -115,12 +116,13 @@ export function ROISummary({ state, getChartImage }: {
       sx={{
         flex: 1,
         padding: 3,
-        backgroundColor: "#E5D7FF",
+        backgroundColor: "#e8e0ff",
         borderRadius: 2,
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
         height: "100%",
+        color: "#343A41",  // Set color for all child text elements
       }}
     >
       {/* ROI Summary */}
@@ -145,13 +147,13 @@ export function ROISummary({ state, getChartImage }: {
         <IntroDivider
           title="Productivity Gain"
           value={displayDollars(productivityGain)}
-          description={
+          description={(
             <>
               Calculated as the sum of <br />
               revenue increase and cost <br />
               savings over the years
             </>
-          }
+          )}
         />
         <IntroDivider title="Cumulative ROI" value={`${yearOneCmlPct}%`} description="Year 1" />
         <IntroDivider title="Cumulative ROI" value={`${yearTwoCmlPct}%`} description="Year 2" />

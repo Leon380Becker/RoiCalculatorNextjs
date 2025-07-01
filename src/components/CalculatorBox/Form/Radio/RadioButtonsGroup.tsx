@@ -19,7 +19,7 @@ export function RowRadioButtonsGroup({ value, onValueChange }: {
     <Box sx={{ width: "100%" }}>
       <FormLabel 
         id="demo-row-radio-buttons-group-label" 
-        sx={{ color: 'black', display: "block", mb: 1 }} 
+        sx={{ color: '#4a5769', display: "block", mb: 1 }} 
       >
         Sprint Planning Frequency
       </FormLabel>
@@ -48,7 +48,7 @@ export function RowRadioButtonsGroup({ value, onValueChange }: {
                 sx={{
                   color: "#BFBFBF",
                   "& .MuiSvgIcon-root": {
-                    backgroundColor: "#E1E2E4",
+                    backgroundColor: "#e7e8e9",
                     borderRadius: "50%",
                     width: "1em",
                     height: "1em",
@@ -76,6 +76,7 @@ export function RowRadioButtonsGroup({ value, onValueChange }: {
             }
             label={<Typography variant="body2">{`${val} week${val > 1 ? 's' : ''}`}</Typography>}
             sx={{
+              color: "#4a5769",
               display: "flex", 
               alignItems: "center",
               m: 0, 

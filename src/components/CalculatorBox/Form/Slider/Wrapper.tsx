@@ -21,6 +21,7 @@ export function SliderWrapper({
       {/* Title & Value */}
       <Box
         sx={{
+          color: "#4a5769",
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
@@ -33,6 +34,7 @@ export function SliderWrapper({
           variant="h6"
           component="h6"
           sx={{
+            color: "#4a5769",
             "@media (max-width: 600px)": {
               fontSize: "14px",
             },
@@ -45,7 +47,7 @@ export function SliderWrapper({
         <Box
           sx={{
             width: "70px",
-            backgroundColor: "#E1E2E4",
+            backgroundColor: "#e7e8e9",
             borderRadius: "5px",
             display: "flex",
             alignItems: "center",
@@ -85,6 +87,7 @@ export function SliderWrapper({
           justifyContent: "space-between",
           paddingTop: "5px",
           position: "relative",
+          color: "#4a5769",
           "@media (max-width: 600px)": {
             paddingTop: "0px",
             paddingBottom: "2px",

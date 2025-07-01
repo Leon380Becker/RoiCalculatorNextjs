@@ -1,15 +1,15 @@
 import React from 'react'; 
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box'; 
+import Stack from '@mui/material/Stack'; 
 import Typography from '@mui/material/Typography';
 
 export function IntroDivider({ title, value, description }: {
   title: string;
   value: string;
-  description: string | React.ReactElement
+  description: string | React.ReactElement;
 }) {
   return (
-    <Box sx={{ mt: 2 }}>
+    <Box sx={{ mt: 2, color: "#343A41" }}>
       <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
         <Typography
           gutterBottom
@@ -42,18 +42,16 @@ export function IntroDivider({ title, value, description }: {
         </Typography>
       </Stack>
       <Typography
-  variant="h3"
-  sx={{
-    color: "#30333E", 
-    maxWidth: "70%", 
-    whiteSpace: "normal",
-    wordWrap: "break-word",
-    fontSize: "0.82em", 
-  }}
->
-  {description}
-</Typography>
-
+        variant="h3"
+        sx={{
+          maxWidth: "70%", 
+          whiteSpace: "normal",
+          wordWrap: "break-word",
+          fontSize: "0.82em", 
+        }}
+      >
+        {description}
+      </Typography>
     </Box>
   );
-} 
+}

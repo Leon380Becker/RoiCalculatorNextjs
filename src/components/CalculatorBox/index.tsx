@@ -33,7 +33,7 @@ export function CalculatorBox({ state, setState, getChartImage }: {
       sx={{
         display: "flex",
         flex: 1,
-        backgroundColor: "white",
+        backgroundColor: "#f9fafb",
         flexDirection: { xs: "column", lg: "row" },
         alignItems: "center",
         paddingX: { xs: "2%", sm: "9%" },
@@ -66,6 +66,7 @@ export function CalculatorBox({ state, setState, getChartImage }: {
           component="h2"
           sx={{
             mt: 2,
+            color: "#343a41",
             fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
           }}
         >
@@ -88,7 +89,7 @@ export function CalculatorBox({ state, setState, getChartImage }: {
       </Box>
 
       {/* --------- Right Section: Form & Summary Card --------- */}
-      <Box sx={{ flex: 6, padding: 2, width: "100%" }}>
+      <Box sx={{ flex: 5.1, padding: 2, width: "100%" }}>
         <Card
           sx={{
             padding: { xs: 1, sm: 3, md: 2 },
@@ -102,6 +103,7 @@ export function CalculatorBox({ state, setState, getChartImage }: {
             component="h2"
             sx={{
               textAlign: "center",
+              color: "#343a41",
               fontWeight: "bold",
               py: { xs: 2, md: 3 },
               fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
@@ -136,6 +138,7 @@ export function CalculatorBox({ state, setState, getChartImage }: {
                 display: "flex",
                 flexDirection: "column",
                 width: "100%",
+                backgroundColor: "#e8e0ff",
               }}
             >
               <ROISummary state={state} getChartImage={getChartImage} />
